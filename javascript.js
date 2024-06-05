@@ -15,10 +15,12 @@ function percent(num)
 let btns = document.querySelectorAll('button');
 let num = 0;
 let operator=null;
+let val=false;
 
 function operate()
 {
     let operation=0;
+    val=false;
     if(operator=="+") 
     {
         operation=num+parseFloat(document.getElementById("result").innerHTML);
@@ -125,11 +127,15 @@ for (i of btns) {
             }
             else if(operator!=null)
             {
-                if(document.getElementById("result").innerHTML.indexOf(".")==(document.getElementById("result").innerHTML.length-1))
+                if(document.getElementById("result").innerHTML.indexOf(".")==(document.getElementById("result").innerHTML.length-1) || val==true)
                 {
                     document.getElementById("result").innerHTML+=this.innerHTML;
                 }    
-                else document.getElementById("result").innerHTML=this.innerHTML;
+                else 
+                {
+                    document.getElementById("result").innerHTML=this.innerHTML;
+                    val=true;
+                }
             }
             else
             {
